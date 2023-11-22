@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Enlace a los estilos de Bootstrap (puedes usar la CDN o descargar los archivos) -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Contacto con Mapa</title>
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand ml-auto" href="#">Veterinaria XYZ</a>
+  
+          <div class="ml-auto order-lg-last">
+            <a href="login.html">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-person-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path
+                  fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                />
+              </svg>
+              Iniciar sesión
+            </a>
+          </div>
+  
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="sobrenosotros.html">Sobre nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="servicios.html">Servicios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contacto.html">Contacto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="citas.html">Citas</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+    <div class="container mt-5">
+      <h1>Contacto</h1>
+      <div class="row">
+        <!-- Columna del formulario -->
+        <div class="col-md-6">
+            <p>
+                En caso de <strong>emergencia</strong>, llama al: <strong>666-666-6666</strong>.
+                Estamos aquí para ayudarte. Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos.
+              </p>
+              
+          <form>
+            <div class="form-group">
+              <label for="nombre">Nombre:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                placeholder="Tu nombre"
+              />
+            </div>
+            <div class="form-group">
+              <label for="correo">Correo electrónico:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="correo"
+                placeholder="tucorreo@example.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje:</label>
+              <textarea
+                class="form-control"
+                id="mensaje"
+                rows="5"
+                placeholder="Escribe tu mensaje aquí"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Enviar Mensaje
+            </button>
+          </form>
+        </div>
+
+        <!-- Columna de la ubicación y mapa de Leaflet -->
+        <div class="col-md-6">
+          <h2>Ubicación en el Mapa</h2>
+
+          <!-- Mapa de Leaflet -->
+          <div id="map" style="height: 400px"></div>
+
+          <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+          <script>
+            // Coordenadas del lugar que quieres mostrar en el mapa
+            var myLatLng = [25.79953045765116, -108.97426139679612];
+
+            // Crear el mapa y configurar las opciones
+            var map = L.map("map").setView(myLatLng, 15);
+
+            // Agregar la capa de mapa base (puedes cambiar "OpenStreetMap.Mapnik" a otros proveedores)
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              attribution: "© OpenStreetMap contributors",
+            }).addTo(map);
+
+            // Agregar un marcador al mapa
+            L.marker(myLatLng).addTo(map).bindPopup("Veterinaria XYZ").openPopup();
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
