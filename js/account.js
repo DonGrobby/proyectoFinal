@@ -13,13 +13,10 @@ function log_in(){
     body: JSON.stringify(datos)
     })
     .then(response => {
-    
-        console.log(response);
-    
-        return response.json();
+        return response.text();
     })
     .then(data => {
-        console.log(data);
+        alert(data);
     })
     .catch(error => {
         console.error('Hubo un problema con la solicitud:', error);
