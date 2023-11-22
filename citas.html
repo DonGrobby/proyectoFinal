@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Servicios - Veterinaria XYZ</title>
+
+    <!-- Enlace a los estilos de Bootstrap (puedes usar la CDN o descargar los archivos) -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand ml-auto" href="#">Veterinaria XYZ</a>
+
+        <div class="ml-auto order-lg-last">
+          <a href="login.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+              />
+            </svg>
+            Iniciar sesión
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobrenosotros.html">Sobre nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="citas.html">Citas</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container mt-5">
+        <h1>Programar Cita</h1>
+        <p>Selecciona una fecha y hora para programar tu cita con nuestro equipo veterinario.</p>
+      
+        <form>
+          <fieldset>
+            <legend>Información de la Mascota</legend>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nombreMascota">Nombre de la Mascota:</label>
+                  <input type="text" class="form-control" id="nombreMascota" required placeholder="Ej. Max">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="tipoAnimal">Tipo de Animal:</label>
+                  <input type="text" class="form-control" id="tipoAnimal" required placeholder="Ej. Perro">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="raza">Raza: (opcional)</label>
+                  <input type="text" class="form-control" id="raza" placeholder="Ej. Labrador">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="sexo">Sexo:</label>
+                  <select class="form-control" id="sexo" required>
+                    <option value="" disabled selected>Selecciona el sexo</option>
+                    <option value="Macho">Macho</option>
+                    <option value="Hembra">Hembra</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="edad">Edad:</label>
+              <input type="text" class="form-control" id="edad" required placeholder="Ej. 2 años">
+            </div>
+            <div class="form-group">
+                <label for="foto">Foto de la Mascota:</label>
+                <input type="file" class="form-control-file" id="foto" accept="image/*" capture="camera" />
+                <small class="form-text text-muted">Adjunta una foto opcional de tu mascota. Puedes tomar una foto o seleccionar una existente.</small>
+              </div>
+          </fieldset>
+      
+          <fieldset>
+            <legend>Detalles de la Cita</legend>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fecha">Fecha:</label>
+                  <input type="date" class="form-control" id="fecha" min="<?php echo date('Y-m-d'); ?>" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="servicio">Tipo de Servicio:</label>
+                  <select class="form-control" id="servicio" required>
+                    <option value="" disabled selected>Selecciona un servicio</option>
+                    <!-- opciones de servicio (mantén las opciones existentes) -->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="hora">Hora:</label>
+              <select class="form-control" id="hora" required>
+                <option value="" disabled selected>Selecciona una hora</option>
+                <!-- opciones de hora (actualiza según sea necesario) -->
+              </select>
+            </div>
+          </fieldset>
+      
+          <button type="submit" class="btn btn-primary">Programar Cita</button>
+        </form>
+        <p class="mt-3">
+          <small>Nota: Se enviará una confirmación de la cita a su correo electrónico.</small>
+        </p>
+      </div>
+      
+    <div class="container mt-5">
+      <h1>Mis Citas</h1>
+
+      <!-- Lista de citas anteriores -->
+      <ul class="list-group">
+        <!-- Ejemplo de una cita pendiente -->
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3"><strong>Fecha:</strong> 2023-11-01</div>
+            <div class="col-md-3"><strong>Hora:</strong> 15:00</div>
+            <div class="col-md-3"><strong>Mascota:</strong> Max</div>
+            <div class="col-md-3"><strong>Veterinario:</strong> Dr. Pérez</div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <strong>Detalles:</strong> Consulta de rutina y vacunación.
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <span class="badge badge-info">Pendiente</span>
+            </div>
+          </div>
+        </li>
+
+        <!-- Ejemplo de una cita cancelada -->
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3"><strong>Fecha:</strong> 2023-11-15</div>
+            <div class="col-md-3"><strong>Hora:</strong> 10:30</div>
+            <div class="col-md-3"><strong>Mascota:</strong> Luna</div>
+            <div class="col-md-3">
+              <strong>Veterinario:</strong> Dra. Rodríguez
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <strong>Detalles:</strong> Problemas de salud repentinos.
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <span class="badge badge-danger">Cancelada</span>
+            </div>
+          </div>
+        </li>
+
+        <!-- Ejemplo de una cita completada -->
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3"><strong>Fecha:</strong> 2023-12-02</div>
+            <div class="col-md-3"><strong>Hora:</strong> 14:15</div>
+            <div class="col-md-3"><strong>Mascota:</strong> Rocky</div>
+            <div class="col-md-3">
+              <strong>Veterinario:</strong> Dr. Sánchez
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <strong>Detalles:</strong> Control postoperatorio.
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <span class="badge badge-success">Completada</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- Pie de página -->
+    <footer class="footer mt-5">
+      <div class="container text-center">
+        <p class="text-muted">© 2023 Tu Clínica Veterinaria</p>
+      </div>
+    </footer>
+
+    <!-- Enlace a los scripts de Bootstrap (puedes usar la CDN o descargar los archivos) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      document
+        .getElementById("fecha")
+        .addEventListener("change", actualizarHoras);
+
+      function actualizarHoras() {
+        var fechaInput = document.getElementById("fecha").value;
+        var diaSemana = new Date(fechaInput).getDay();
+        var horaInput = document.getElementById("hora");
+        var horasAtencion;
+
+        // Restablecer las opciones de hora
+        horaInput.innerHTML = "";
+
+        // Definir las horas de atención según el día de la semana
+        if (diaSemana >= 1 && diaSemana <= 5) {
+          horasAtencion = [
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00",
+            "17:00",
+          ];
+        } else if (diaSemana === 6) {
+          horasAtencion = [
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+          ];
+        } else {
+          document.getElementById("horaHelp").innerHTML =
+            "La clínica está cerrada los domingos. Por favor, elige otro día.";
+          return;
+        }
+
+        // Añadir las opciones de hora válidas
+        for (var i = 0; i < horasAtencion.length; i++) {
+          var opcionHora = document.createElement("option");
+          opcionHora.value = horasAtencion[i];
+          opcionHora.text = horasAtencion[i];
+          horaInput.add(opcionHora);
+        }
+
+        // Restablecer el mensaje de ayuda
+        document.getElementById("horaHelp").innerHTML =
+          "Por favor, elige una hora durante el horario de atención.";
+      }
+    </script>
+  </body>
+</html>
