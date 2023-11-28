@@ -2,30 +2,61 @@ document.getElementById("registerForm").addEventListener("submit", function (eve
     event.preventDefault();
 });
 
-function login_inproccess() {
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+});
+
+function login() {
+    var formulario = document.getElementById("loginForm");
+
+    if (formulario.checkValidity()) {
+        loginOperation();
+    }
+}
+
+function loginOperation(){
+    var loginEmail = document.getElementById('loginEmail')
+    var loginPassword = document.getElementById('loginPassword')
 
     var datos = {
-        correo: document.getElementById('correo').value,
-        contrasena: document.getElementById('contrasena').value
+        email: loginEmail.value,
+        password: loginPassword.value
     };
 
-    fetch('php/connection.php', {
+    fetch('php/login_user.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(datos)
     })
-        .then(response => {
-            return response.text();
-        })
-        .then(data => {
-            alert(data);
-        })
-        .catch(error => {
-            console.error('Hubo un problema con la solicitud:', error);
-        });
+    .then(response => {
+        return response.text();
+    })
+    .then(data => {
+        if(data.includes('SQLSTATE')){
+            alert('No se ha podido conectarse al servidor, inténtelo más tarde');
 
+            loginEmail.value = '';
+            loginPassword.value = '';
+            return;
+        } else if (data == 'emailNotExist') {
+            alert('Este correo no está registrado.'); 
+
+            loginEmail.value = '';
+            loginPassword.value = '';
+            return;
+        } else if (data == 'wrongPassword') {
+            alert('La contraseña es errónea.');
+
+            loginPassword.value = '';
+            return;
+        }
+        window.location.href = 'index.html';
+    })
+    .catch(error => {
+        console.error('Hubo un problema con la solicitud:', error);
+    });
 }
 
 function regist_inproccess() {
