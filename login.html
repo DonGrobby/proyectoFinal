@@ -131,7 +131,7 @@
 
       <div class="tab-content">
         <div class="tab-pane fade show active" id="login">
-          <form>
+          <form id="loginForm">
             <div class="form-group">
               <label for="loginEmail">Correo electrónico:</label>
               <input
@@ -152,13 +152,13 @@
                 required
               />
             </div>
-            <button type="submit" class="btn btn-primary btn-block">
-              Iniciar sesión
-            </button>
           </form>
+          <button onclick="login_inproccess()" class="btn btn-primary btn-block">
+            Iniciar sesión
+          </button>
         </div>
         <div class="tab-pane fade" id="register">
-          <form>
+          <form id="registerForm">
             <div class="form-group">
               <label for="registerName">Nombre:</label>
               <input
@@ -213,14 +213,16 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-success btn-block">
+            <button onclick="regist_inproccess()" class="btn btn-success btn-block">
               Registrarse
             </button>
           </form>
+          
         </div>
       </div>
     </div>
 
+    <script src="js/account.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
