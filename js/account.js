@@ -55,6 +55,16 @@ function registOperation() {
             return response.text();
         })
         .then(data => {
+            if(data.includes('SQLSTATE')){
+                alert('No se ha podido conectarse al servidor, inténtelo más tarde');
+                return;
+            } else if (data == 'nameTaken') {
+                alert('El nombre ya se encuentra en uso.'); 
+                return;
+            } else if (data == 'registeredEmail') {
+                alert('El correo ya se encuentra en uso.');
+                return;
+            }
             window.location.href = 'index.html';
         })
         .catch(error => {
