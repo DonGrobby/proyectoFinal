@@ -1,8 +1,8 @@
-document.getElementById("registerForm").addEventListener("submit", function(event) {
+document.getElementById("registerForm").addEventListener("submit", function (event) {
     event.preventDefault();
 });
 
-function login_inproccess(){
+function login_inproccess() {
 
     var datos = {
         correo: document.getElementById('correo').value,
@@ -10,25 +10,25 @@ function login_inproccess(){
     };
 
     fetch('php/connection.php', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(datos)
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
     })
-    .then(response => {
-        return response.text();
-    })
-    .then(data => {
-        alert(data);
-    })
-    .catch(error => {
-        console.error('Hubo un problema con la solicitud:', error);
-    });
-    
+        .then(response => {
+            return response.text();
+        })
+        .then(data => {
+            alert(data);
+        })
+        .catch(error => {
+            console.error('Hubo un problema con la solicitud:', error);
+        });
+
 }
 
-function regist_inproccess(){
+function regist_inproccess() {
 
     var formulario = document.getElementById("registerForm");
 
@@ -37,27 +37,27 @@ function regist_inproccess(){
     }
 }
 
-function registOperation(){
+function registOperation() {
     var datos = {
         name: document.getElementById('registerName').value,
         email: document.getElementById('registerEmail').value,
         password: document.getElementById('registerPassword').value
     };
 
-    fetch('php/connection.php', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(datos)
+    fetch('php/regist_user.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
     })
-    .then(response => {
-        return response.text();
-    })
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => {
-        console.error('Hubo un problema con la solicitud:', error);
-    });
+        .then(response => {
+            return response.text();
+        })
+        .then(data => {
+            window.location.href = 'index.html';
+        })
+        .catch(error => {
+            console.error('Hubo un problema con la solicitud:', error);
+        });
 }
