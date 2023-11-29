@@ -67,96 +67,88 @@
             <li class="nav-item active">
               <a class="nav-link" href="citasUsuario.html">Citas</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="misMascotas.html">Mis Mascotas</a>
+            </li>
           </ul>
         </div>
       </nav>
     </header>
 
     <div class="container mt-5">
-        <h1>Programar Cita</h1>
-        <p>Selecciona una fecha y hora para programar tu cita con nuestro equipo veterinario.</p>
-      
-        <form>
-          <fieldset>
-            <legend>Información de la Mascota</legend>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="nombreMascota">Nombre de la Mascota:</label>
-                  <input type="text" class="form-control" id="nombreMascota" required placeholder="Ej. Max">
-                </div>
+      <h1>Programar Cita</h1>
+      <p>
+        Selecciona una fecha y hora para programar tu cita con nuestro equipo
+        veterinario.
+      </p>
+
+      <form>
+        <fieldset>
+          <legend>Detalles de la Cita</legend>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fecha"
+                  min="<?php echo date('Y-m-d'); ?>"
+                  required
+                />
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="tipoAnimal">Tipo de Animal:</label>
-                  <input type="text" class="form-control" id="tipoAnimal" required placeholder="Ej. Perro">
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="servicio">Tipo de Servicio:</label>
+                <select class="form-control" id="servicio" required>
+                  <option value="" disabled selected>
+                    Selecciona un servicio
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="hora">Hora:</label>
+                <select class="form-control" id="hora" required>
+                  <option value="" disabled selected>
+                    Selecciona una hora
+                  </option>
+                  <!-- opciones de hora (actualiza según sea necesario) -->
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="mascota">Mascota:</label>
+                <select class="form-control" id="mascota" required>
+                  <option value="" disabled selected>
+                    Selecciona una mascota
+                  </option>
+                  <!-- opciones de mascota se agregarán dinámicamente con JavaScript -->
+                </select>
+                <div class="container" id="mensajeMascota">
+                  <!-- Este div se llenará con el mensaje si no hay mascotas -->
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="raza">Raza: (opcional)</label>
-                  <input type="text" class="form-control" id="raza" placeholder="Ej. Labrador">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="sexo">Sexo:</label>
-                  <select class="form-control" id="sexo" required>
-                    <option value="" disabled selected>Selecciona el sexo</option>
-                    <option value="Macho">Macho</option>
-                    <option value="Hembra">Hembra</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="edad">Edad:</label>
-              <input type="text" class="form-control" id="edad" required placeholder="Ej. 2 años">
-            </div>
-            <div class="form-group">
-                <label for="foto">Foto de la Mascota:</label>
-                <input type="file" class="form-control-file" id="foto" accept="image/*" capture="camera" />
-                <small class="form-text text-muted">Adjunta una foto opcional de tu mascota. Puedes tomar una foto o seleccionar una existente.</small>
-              </div>
-          </fieldset>
-      
-          <fieldset>
-            <legend>Detalles de la Cita</legend>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="fecha">Fecha:</label>
-                  <input type="date" class="form-control" id="fecha" min="<?php echo date('Y-m-d'); ?>" required>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="servicio">Tipo de Servicio:</label>
-                  <select class="form-control" id="servicio" required>
-                    <option value="" disabled selected>Selecciona un servicio</option>
-                    <!-- opciones de servicio (mantén las opciones existentes) -->
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="hora">Hora:</label>
-              <select class="form-control" id="hora" required>
-                <option value="" disabled selected>Selecciona una hora</option>
-                <!-- opciones de hora (actualiza según sea necesario) -->
-              </select>
-            </div>
-          </fieldset>
-      
-          <button type="submit" class="btn btn-primary">Programar Cita</button>
-        </form>
-        <p class="mt-3">
-          <small>Nota: Se enviará una confirmación de la cita a su correo electrónico.</small>
-        </p>
-      </div>
-      
+        
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary">Programar Cita</button>
+      </form>
+      <p class="mt-3">
+        <small
+          >Nota: Se enviará una confirmación de la cita a su correo
+          electrónico.</small
+        >
+      </p>
+    </div>
+
     <div class="container mt-5">
       <h1>Mis Citas</h1>
 
@@ -291,6 +283,48 @@
         // Restablecer el mensaje de ayuda
         document.getElementById("horaHelp").innerHTML =
           "Por favor, elige una hora durante el horario de atención.";
+      }
+    </script>
+    <script>
+      window.onload = function () {
+        validarFormulario();
+      };
+      // Lógica para verificar si el usuario tiene mascotas y actualizar el formulario
+      function validarFormulario() {
+        // Aquí deberías tener tu propia lógica para verificar si el usuario tiene mascotas
+        var usuarioTieneMascotas = true; // Cambia esto con tu lógica real
+
+        // Si el usuario tiene mascotas, actualiza las opciones de la lista desplegable
+        if (usuarioTieneMascotas) {
+          actualizarOpcionesMascotas();
+        } else {
+          // Si no tiene mascotas, muestra el mensaje para agregar una mascota
+          mostrarMensajeAgregarMascota();
+          return false; // Detener la presentación del formulario
+        }
+
+        // Puedes agregar más lógica de validación aquí si es necesario
+
+        return true; // Permitir la presentación del formulario
+      }
+
+      // Función para actualizar las opciones de la lista de mascotas
+      function actualizarOpcionesMascotas() {
+        // Aquí deberías agregar dinámicamente las opciones de la lista de mascotas
+        var selectMascota = document.getElementById("mascota");
+        selectMascota.innerHTML =
+          '<option value="mascota1">Mascota 1</option>' +
+          '<option value="mascota2">Mascota 2</option>' +
+          '<option value="mascota3">Mascota 3</option>';
+      }
+
+      // Función para mostrar el mensaje para agregar una mascota
+      function mostrarMensajeAgregarMascota() {
+        var mensajeMascota = document.getElementById("mensajeMascota");
+        var selectMascota = document.getElementById("mascota");
+        selectMascota.style.display="none";
+        mensajeMascota.innerHTML =
+          '<span>Parace que no has agregado a tu mascota <a href="misMascotas.html">Agregar Mascota</a></span>';
       }
     </script>
   </body>
