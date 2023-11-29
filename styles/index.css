@@ -1,0 +1,19 @@
+@media (max-width: 576px) {
+    .container h1 {
+        font-size: 48px;
+    }
+}
+
+/* Media queries para dispositivos medianos (de 576px a 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .container h1 {
+        font-size: 52px;
+    }
+}
+
+/* Media queries para dispositivos grandes (de 769px a 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+    .container h1 {
+        font-size: 64px;
+    }
+}
