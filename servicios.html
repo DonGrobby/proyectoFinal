@@ -13,64 +13,68 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
+    <link rel="preload" href="styles/servicios.css" as="style">
+
+    <link rel="stylesheet" href="styles/servicios.css">
   </head>
+
   <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand ml-auto" href="#">Veterinaria XYZ</a>
-  
-          <div class="ml-auto order-lg-last">
-            <a href="login.html">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                fill="currentColor"
-                class="bi bi-person-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                <path
-                  fill-rule="evenodd"
-                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                />
-              </svg>
-              Iniciar sesión
-            </a>
-          </div>
-  
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="/">Inicio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="sobrenosotros.html">Sobre nosotros</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="servicios.html">Servicios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contacto.html">Contacto</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="citas.html">Citas</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand ml-auto" href="#">Veterinaria XYZ</a>
+
+        <div class="ml-auto order-lg-last">
+          <a href="login.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+              />
+            </svg>
+            Iniciar sesión
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobrenosotros.html">Sobre nosotros</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="citas.html">Citas</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <div class="container mt-5">
       <h1>Nuestros Servicios</h1>
       <p>
@@ -84,7 +88,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_vacunaciones.jpg"
+              src="images/vacunacion.webp"
               class="card-img-top"
               alt="Vacunaciones"
             />
@@ -102,11 +106,7 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="imagen_cirugias.jpg"
-              class="card-img-top"
-              alt="Cirugías"
-            />
+            <img src="images/cirugia.jpg" class="card-img-top" alt="Cirugías" />
             <div class="card-body">
               <h5 class="card-title">Cirugía</h5>
               <p class="card-text">
@@ -122,11 +122,7 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="imagen_dentales.jpg"
-              class="card-img-top"
-              alt="Dentales"
-            />
+            <img src="images/dental.jpg" class="card-img-top" alt="Dentales" />
             <div class="card-body">
               <h5 class="card-title">Cuidado Dental</h5>
               <p class="card-text">Limpieza dental y extracciones dentales.</p>
@@ -142,7 +138,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_laboratorio.jpg"
+              src="images/laboratorio.jpg"
               class="card-img-top"
               alt="Laboratorio y Pruebas Diagnósticas"
             />
@@ -161,7 +157,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_hospitalizacion.jpg"
+              src="images/hospitalizacion.jpg"
               class="card-img-top"
               alt="Hospitalización"
             />
@@ -181,7 +177,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_cuidados_especializados.jpg"
+              src="images/cuidados.webp"
               class="card-img-top"
               alt="Cuidados Especializados"
             />
@@ -200,7 +196,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_peluqueria.jpg"
+              src="images/peluqueria.jpg"
               class="card-img-top"
               alt="Peluquería y Cuidado Estético"
             />
@@ -219,7 +215,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_nutricion.jpg"
+              src="images/nutricion.jpg"
               class="card-img-top"
               alt="Nutrición y Asesoramiento Dietético"
             />
@@ -238,7 +234,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_rehabilitacion_fisica.jpg"
+              src="images/rehabilitacion.jpg"
               class="card-img-top"
               alt="Rehabilitación Física"
             />
@@ -256,7 +252,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_servicios_emergencia.jpg"
+              src="images/emergencias.jpg"
               class="card-img-top"
               alt="Servicios de Emergencia"
             />
@@ -274,7 +270,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_animales_exoticos.jpg"
+              src="images/exoticos.jpg"
               class="card-img-top"
               alt="Cuidado de Animales Exóticos"
             />
@@ -293,7 +289,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_asesoramiento_comportamental.jpg"
+              src="images/temperamental.jpg"
               class="card-img-top"
               alt="Asesoramiento Comportamental"
             />
@@ -313,7 +309,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_hospedaje.jpg"
+              src="images/guarderias.jpg"
               class="card-img-top"
               alt="Servicios de Hospedaje o Guardería"
             />
@@ -332,7 +328,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <img
-              src="imagen_microchip.jpg"
+              src="images/microchip.jpeg"
               class="card-img-top"
               alt="Microchip y Identificación"
             />

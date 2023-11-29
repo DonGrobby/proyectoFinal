@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Manejo de Citas - Veterinaria XYZ</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Manejo de Citas</h1>
+
+      <!-- Filtrado de Citas -->
+      <div class="form-group">
+        <label for="filtroCitas">Filtrar Citas:</label>
+        <select class="form-control" id="filtroCitas" onchange="cargarCitas()">
+          <option value="todas">Todas las Citas</option>
+          <option value="Pendiente">Citas Pendientes</option>
+          <option value="Completada">Citas Completadas</option>
+          <option value="Cancelada">Citas Canceladas</option>
+        </select>
+      </div>
+      <select name="" id=""></select>
+      <ul class="list-group" id="listaCitas"></ul>
+    </div>
+
+    <script>
+      var citas = [
+        {
+          id: 1,
+          fecha: "2023-11-01",
+          hora: "15:00",
+          mascota: "Max",
+          veterinario: "Dr. Pérez",
+          detalles: "Consulta de rutina y vacunación.",
+          estado: "Pendiente",
+        },
+        {
+          id: 2,
+          fecha: "2023-11-15",
+          hora: "10:30",
+          mascota: "Luna",
+          veterinario: "Dra. Rodríguez",
+          detalles: "Problemas de salud repentinos.",
+          estado: "Cancelada",
+        },
+        {
+          id: 3,
+          fecha: "2023-12-02",
+          hora: "14:15",
+          mascota: "Rocky",
+          veterinario: "Dr. Sánchez",
+          detalles: "Control postoperatorio.",
+          estado: "Completada",
+        },
+      ];
+      function cargarCitas() {
+        const filtro = document.getElementById("filtroCitas").value;
+        const citasFiltradas =
+          filtro === "todas"
+            ? citas
+            : citas.filter((cita) => cita.estado === filtro);
+
+        const listaCitas = document.getElementById("listaCitas");
+        listaCitas.innerHTML = "";
+
+        citasFiltradas.forEach(function (cita) {
+          const li = document.createElement("li");
+          li.className = "list-group-item";
+          li.innerHTML = getCitaHTMLTemplate(cita);
+          listaCitas.appendChild(li);
+        });
+      }
+
+      function getCitaHTMLTemplate(cita) {
+        return `
+        <div class="row">
+            <div class="col-md-3"><strong>Fecha:</strong> ${cita.fecha}</div>
+            <div class="col-md-3"><strong>Hora:</strong> ${cita.hora}</div>
+            <div class="col-md-3"><strong>Mascota:</strong> ${
+              cita.mascota
+            }</div>
+            <div class="col-md-3"><strong>Veterinario:</strong> ${
+              cita.veterinario
+            }</div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <strong>Detalles:</strong> ${cita.detalles}
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <select class="form-control btn-${obtenerColorEstado(
+                  cita.estado
+                )}" onchange="handleDropdownChange(event, ${cita.id})">
+                    <option value="Pendiente" ${
+                      cita.estado === "Pendiente" ? "selected" : ""
+                    }>Pendiente</option>
+                    <option value="Cancelada" ${
+                      cita.estado === "Cancelada" ? "selected" : ""
+                    }>Cancelada</option>
+                    <option value="Completada" ${
+                      cita.estado === "Completada" ? "selected" : ""
+                    }>Completada</option>
+                </select>
+            </div>
+        </div>
+
+
+    `;
+      }
+
+      function handleDropdownChange(event, citaId) {
+        const nuevoEstado = event.target.value;
+        citas.forEach((cita) => {
+          if (cita.id === citaId) {
+            cita.estado = nuevoEstado;
+          }
+        });
+
+        cargarCitas();
+      }
+
+
+      function obtenerColorEstado(estado) {
+        switch (estado) {
+          case "Pendiente":
+            return "info";
+          case "Cancelada":
+            return "danger";
+          case "Completada":
+            return "success";
+          default:
+            return "secondary";
+        }
+      }
+
+      function cambiarEstado(idCita, estadoActual) {
+        var nuevoEstado = prompt(
+          "Selecciona el nuevo estado:\nPendiente, Cancelada, Completada",
+          estadoActual
+        );
+
+        if (nuevoEstado !== null) {
+          citas.forEach((cita) => {
+            if (cita.id === idCita) {
+              cita.estado = nuevoEstado;
+            }
+          });
+
+          cargarCitas();
+        }
+      }
+
+      cargarCitas();
+    </script>
+
+    <!-- Pie de página -->
+    <footer class="footer mt-5">
+      <div class="container text-center">
+        <p class="text-muted">© 2023 Tu Clínica Veterinaria</p>
+      </div>
+    </footer>
+
+    <!-- Enlace a los scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Mis Mascotas</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Mis Mascotas</h1>
+
+
+
+      <hr />
+
+      <!-- Sección para mostrar las mascotas registradas -->
+      <h2>Mascotas Registradas</h2>
+      <ul id="listaMascotas" class="list-group">
+        <!-- Aquí se mostrarán las mascotas -->
+      </ul>
+      <div id="agregarMascota">
+        <h2>Agregar Mascota</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="nombreMascota">Nombre de la Mascota:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombreMascota"
+                required
+                placeholder="Ej. Max"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="tipoAnimal">Tipo de Animal:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tipoAnimal"
+                required
+                placeholder="Ej. Perro"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="raza">Raza: (opcional)</label>
+              <input
+                type="text"
+                class="form-control"
+                id="raza"
+                placeholder="Ej. Labrador"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="sexo">Sexo:</label>
+              <select class="form-control" id="sexo" required>
+                <option value="" disabled selected>Selecciona el sexo</option>
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="edad">Edad:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="edad"
+            required
+            placeholder="Ej. 2 años"
+          />
+        </div>
+        <div class="form-group">
+          <label for="foto">Foto de la Mascota:</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="foto"
+            accept="image/*"
+            capture="camera"
+          />
+          <small class="form-text text-muted"
+            >Adjunta una foto opcional de tu mascota. Puedes tomar una foto o
+            seleccionar una existente.
+          </small>
+        </div>
+        <button class="btn btn-primary" onclick="agregarMascota()">
+          Agregar Mascota
+        </button>
+      </div>
+    </div>
+
+    <script>
+      var mascotas = [];
+
+      function agregarMascota() {
+        const nombre = document.getElementById("nombreMascota").value;
+        const tipo = document.getElementById("tipoAnimal").value;
+        const raza = document.getElementById("raza").value;
+        const sexo = document.getElementById("sexo").value;
+        const edad = document.getElementById("edad").value;
+        const foto = document.getElementById("foto").value; // En este punto, puedes realizar acciones con la foto
+
+        // Validar que se ingresen los campos obligatorios
+        if (!nombre || !tipo || !sexo || !edad) {
+          alert("Por favor, completa los campos obligatorios.");
+          return;
+        }
+
+        // Crear un objeto mascota
+        const nuevaMascota = {
+          nombre: nombre,
+          tipo: tipo,
+          raza: raza,
+          sexo: sexo,
+          edad: edad,
+          foto: foto,
+        };
+
+        // Agregar la nueva mascota al array
+        mascotas.push(nuevaMascota);
+
+        // Limpiar el formulario
+        limpiarFormulario();
+
+        // Actualizar la lista de mascotas
+        mostrarMascotas();
+      }
+
+      function mostrarMascotas() {
+        const listaMascotas = document.getElementById("listaMascotas");
+        listaMascotas.innerHTML = "";
+
+        mascotas.forEach((mascota, index) => {
+          const li = document.createElement("li");
+          li.className = "list-group-item";
+          li.innerHTML = `
+                <strong>${mascota.nombre}</strong> (${mascota.tipo}) - Edad: ${mascota.edad} - Sexo: ${mascota.sexo}
+                <button class="btn btn-info btn-sm float-right" onclick="verHistorial(${index})">Ver Historial</button>
+                <div id="historial-${index}" style="display: none;"></div>
+            `;
+          listaMascotas.appendChild(li);
+        });
+      }
+      function verHistorial(index) {
+        const historialDiv = document.getElementById(`historial-${index}`);
+        historialDiv.innerHTML = "";
+
+        // Historial ficticio para cada mascota (puedes personalizar esto según tus necesidades)
+        const historial = [
+          "Vacuna contra la rabia - 2022-01-01",
+          "Control veterinario - 2022-02-15",
+          "Desparasitación - 2022-03-10",
+        ];
+
+        historial.forEach((evento) => {
+          const p = document.createElement("p");
+          p.textContent = evento;
+          historialDiv.appendChild(p);
+        });
+
+        // Mostrar/ocultar el historial
+        historialDiv.style.display =
+          historialDiv.style.display === "none" ? "block" : "none";
+      }
+      function limpiarFormulario() {
+        document.getElementById("nombreMascota").value = "";
+        document.getElementById("tipoAnimal").value = "";
+        document.getElementById("raza").value = "";
+        document.getElementById("sexo").value = "";
+        document.getElementById("edad").value = "";
+        document.getElementById("foto").value = "";
+      }
+
+      // Mostrar las mascotas registradas al cargar la página
+      mostrarMascotas();
+    </script>
+
+    <!-- Enlace a los scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
