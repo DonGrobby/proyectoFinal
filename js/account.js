@@ -52,6 +52,7 @@ function loginOperation(){
             loginPassword.value = '';
             return;
         }
+        sessionStorage.setItem('userLogged', data);
         window.location.href = 'index.html';
     })
     .catch(error => {
@@ -96,6 +97,7 @@ function registOperation() {
                 alert('El correo ya se encuentra en uso.');
                 return;
             }
+            sessionStorage.setItem('userLogged', data);
             window.location.href = 'index.html';
         })
         .catch(error => {
