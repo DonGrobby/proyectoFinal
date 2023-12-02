@@ -45,21 +45,21 @@
 
             $command->execute();
 
-            return 'success';
+            return $postData->data['name'];
         }
 
         public function login_user($pdo, $postData){
 
             if ($this->registedEmail($pdo, $postData->data['email'])) {
 
-                $command = $pdo->prepare("SELECT password FROM users WHERE email = :email");
+                $command = $pdo->prepare("SELECT name,password FROM users WHERE email = :email");
                 $command->bindParam(':email', $postData->data['email']);
                 $command->execute();
 
                 $row = $command->fetch();
 
                 if($row['password'] == md5($postData->data['password'])){
-                    return 'success';
+                    return $row['name'];
                 }
 
                 return 'wrongPassword';
