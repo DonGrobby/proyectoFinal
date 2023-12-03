@@ -1,0 +1,10 @@
+.estado-cita {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: red; /* Puedes cambiar el color de fondo según tu diseño */
+    padding: 5px; /* Añade espaciado para mejorar la apariencia */
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+}
