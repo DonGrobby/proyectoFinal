@@ -1,6 +1,4 @@
-var user = sessionStorage.getItem('userLogged')
-
-console.log(user);
+var user = sessionStorage.getItem('userLogged');
 
 if(user == null){
     document.getElementById('userLogged').innerHTML += 'Iniciar sesión'
