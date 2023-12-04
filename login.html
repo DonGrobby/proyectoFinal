@@ -11,43 +11,9 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <title>Login y Registro</title>
-    <style>
-      .container {
-        max-width: 400px;
-      }
-      .tab-content {
-        border: 1px solid #dee2e6;
-        border-top: 0;
-        padding: 15px;
-      }
-      .form-group {
-        margin-bottom: 15px;
-      }
-      .password-requirements {
-        margin-top: 10px;
-        display: flex;
-        flex-wrap: wrap;
-      }
-      .password-requirement {
-        display: flex;
-        align-items: center;
-        width: 50%; /* Cada requisito ocupa el 50% del ancho */
-        margin-bottom: 5px;
-      }
-      .circle {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        margin-right: 5px;
-      }
-      .red-circle {
-        background-color: red;
-      }
-      .green-circle {
-        background-color: green;
-      }
-    </style>
+    <link rel="stylesheet" href="styles/log_in.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
   </head>
   <body>
     <header>
@@ -154,6 +120,7 @@
                 required
               />
             </div>
+            <a class="mb-2" href="./recuperacion.html">¿Se te ha olvidado la contraseña?</a>
             <button onclick="login()" class="btn btn-primary btn-block">
               Iniciar sesión
             </button>
@@ -216,7 +183,11 @@
                 </div>
               </div>
             </div>
-            <button onclick="regist_inproccess()" class="btn btn-success btn-block">
+            <!-- RECAPTACHA -->
+            <div>
+              <div class="g-recaptcha mb-1" data-sitekey="6LcOVyUpAAAAABaI_vwOotT6fuXw2e1XJqkJicIH"></div>
+            </div>
+            <button onclick="regist()" class="btn btn-success btn-block">
               Registrarse
             </button>
           </form>

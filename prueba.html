@@ -1,0 +1,63 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lorem Ipsum y Botón Centrado</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+            
+        .container {
+            text-align: center;
+        }
+            
+        .lorem {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+            
+        .styled-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+            
+        .styled-button:hover {
+            background-color: #0056b3;
+        }
+
+        </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <p class="lorem">Este es un correo de recuperación, si usted no ha solicitado el proceso de recuperación de contraseña puede ignorar este correo.</p>
+            <button onclick="recovery()" class="styled-button">Recuperar contraseña</button>
+        </div>
+
+        <script>
+
+            function recovery() {
+                window.open('localhost/proyectoFinal/change_password.html?token='+CryptoJS.MD5("hola").toString());
+            }
+
+        </script>
+    </body>
+</html>

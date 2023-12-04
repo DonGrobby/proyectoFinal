@@ -28,7 +28,8 @@ function loginOperation(){
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(datos)
+        body: JSON.stringify(datos),
+        
     })
     .then(response => {
         return response.text();
@@ -48,8 +49,10 @@ function loginOperation(){
             return;
         } else if (data == 'wrongPassword') {
             alert('La contraseña es errónea.');
-
             loginPassword.value = '';
+            return;
+        } else if (data == 'captchaNotSuccess') {
+            alert('Complete el captcha por favor.');
             return;
         }
         sessionStorage.setItem('userLogged', data);
@@ -60,7 +63,7 @@ function loginOperation(){
     });
 }
 
-function regist_inproccess() {
+function regist() {
 
     var formulario = document.getElementById("registerForm");
 
@@ -73,9 +76,9 @@ function registOperation() {
     var datos = {
         name: document.getElementById('registerName').value,
         email: document.getElementById('registerEmail').value,
-        password: document.getElementById('registerPassword').value
+        password: document.getElementById('registerPassword').value,
+        captcha: grecaptcha.getResponse()
     };
-
     fetch('php/regist_user.php', {
         method: 'POST',
         headers: {
@@ -95,6 +98,9 @@ function registOperation() {
                 return;
             } else if (data == 'registeredEmail') {
                 alert('El correo ya se encuentra en uso.');
+                return;
+            } else if (data == 'captchaNotSuccess') {
+                alert('Complete el captcha por favor.');
                 return;
             }
             sessionStorage.setItem('userLogged', data);

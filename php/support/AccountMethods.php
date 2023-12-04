@@ -24,6 +24,26 @@
             return $result;
         }
 
+        public function getToken($pdo, $search_email)
+        {
+            $command = $pdo->prepare("SELECT password FROM users WHERE email = :email");
+            $command->bindParam(':email', $search_email);
+            $command->execute();
+
+            $result = $command->fetch();
+
+            return $result['password'];
+        }
+
+        public function changePassword($pdo, $new_password, $token){
+
+            $command = $pdo->prepare("UPDATE users SET password = :new_password 
+            WHERE password = :token LIMIT 1");
+            $command->bindParam(':new_password', md5($new_password));
+            $command->bindParam(':token', $token);
+            $command->execute();
+        }
+
         public function registUser($pdo, $postData)
         {
             if ($this->nameIsTaken($pdo, $postData->data['name'])) {
